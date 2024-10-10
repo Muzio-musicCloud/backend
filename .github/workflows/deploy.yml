@@ -23,5 +23,6 @@ jobs:
         script: |
           cd /root/workflows/deploy/muzio/backend
           git pull origin main
+          echo "${{ secrets.MY_ENV_VAR }}" >> .env.production
           chmod +x deploy.sh
           ./deploy.sh

@@ -8,7 +8,10 @@ RUN npm install
 
 COPY . .
 
-COPY .env.production .env
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+COPY .env.${NODE_ENV} .env
 
 RUN npm run build
 
