@@ -8,10 +8,7 @@ RUN npm install
 
 COPY . .
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-COPY .env.${NODE_ENV} .env
+COPY .env.production .env.production
 
 RUN npm run build
 
@@ -23,7 +20,7 @@ ENV NODE_ENV=production
 
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/.env .env
+COPY --from=build /app/.env.production .env.production
 
 EXPOSE 3000
 
