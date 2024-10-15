@@ -38,6 +38,7 @@ export class AuthService {
     const newUser = this.userRepository.create({
       ...userData,
       password: hashedPassword,
+      provider: 'local',
     });
 
     return await this.userRepository.save(newUser);
